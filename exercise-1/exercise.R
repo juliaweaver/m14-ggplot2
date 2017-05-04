@@ -64,7 +64,7 @@ ggplot(data = diamonds.sample) +
 # Draw a scatter plot for `diamonds.sample` of *`cut`* by `carat`, where each
 # point has an aesthetic _size_ based on the diamond's *`price`*
 ggplot(data = diamonds.sample) +
-  geom_point(mapping = aes(x = carat, y = price, size = cut))
+  geom_point(mapping = aes(x = cut, y = carat, size = price))
 
 # Try coloring the above plot based on the diamond's price!
 ggplot(data = diamonds.sample) +
@@ -72,21 +72,27 @@ ggplot(data = diamonds.sample) +
 
 # Draw a line plot (with line geometry) for `diamonds.sample`. The x-position should be mapped to
 # carat, y-position to price, and color to carat.
-
+ggplot(data = diamonds.sample) +
+    geom_line(mapping = aes(x = carat, y = price, color = carat))
 
 
 # That's kind of messy. Try using `smooth` geometry instead.
-
+ggplot(data = diamonds.sample) +
+  geom_smooth(mapping = aes(x = carat, y = price, color = cut))
 
 # Draw a plot with bar geometry (a bar chart), mapping the diamond's `cut` to the x-axis
-
+ggplot(data = diamonds.sample) +
+  geom_bar(mapping = aes(x = cut))
 
 # Add an aesthetic property that will _fill_ each bar geometry based on the `clarity` of the diamonds
 # What kind of chart do you get?
-
+ggplot(data = diamonds.sample) +
+  geom_bar(mapping = aes(x = cut, fill = clarity))
 
 # Draw a histogram of diamond prices.
 # Try mapping each bar based on clarity as well!
+ggplot(data = diamonds.sample) +
+  geom_histogram(mapping = aes(x = price, color = clarity) )
 
 
 # (For a more traditional "bell-curve", make a histogram of diamond `depths`)
